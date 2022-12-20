@@ -23,4 +23,5 @@ public class Product {
     private BigDecimal price;
     private String currency;
     private String img;
+    private String slug;
 }

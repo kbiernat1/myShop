@@ -1,5 +1,6 @@
 package pl.kb.shop.admin.controller;
 
+import com.github.slugify.Slugify;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
@@ -77,9 +78,16 @@ public class AdminProductController {
                 .name(adminProductDto.getName())
                 .category(adminProductDto.getCategory())
                 .description(adminProductDto.getDescription())
-                .img(adminProductDto.getImg())
                 .price(adminProductDto.getPrice())
                 .currency(adminProductDto.getCurrency())
+                .img(adminProductDto.getImg())
+                .slug(slugifySlug(adminProductDto.getSlug()))
                 .build();
+    }
+
+    private String slugifySlug(String slug) {
+        Slugify slugify = new Slugify();
+        return slugify.withCustomReplacement("_", "-")
+                .slugify(slug);
     }
 }

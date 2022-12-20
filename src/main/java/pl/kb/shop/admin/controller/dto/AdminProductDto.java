@@ -25,4 +25,7 @@ public class AdminProductDto {
     private BigDecimal price;
     private AdminProductCurrency currency;
     private String img;
+    @NotBlank
+    @Length(min = 4)
+    private String slug;
 }
