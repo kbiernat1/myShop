@@ -20,11 +20,9 @@ public class AdminProductDto {
     @NotBlank
     @Length(min = 4)
     private String description;
-    @NotBlank
-    @Length(min = 7)
-    private String img;
     @NotNull
     @Min(0)
     private BigDecimal price;
     private AdminProductCurrency currency;
+    private String img;
 }
