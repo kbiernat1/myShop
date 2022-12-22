@@ -1,4 +1,4 @@
-package pl.kb.shop.admin.model;
+package pl.kb.shop.admin.product.model;
 
 public enum AdminProductCurrency {
     PLN

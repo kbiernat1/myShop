@@ -1,4 +1,4 @@
-package pl.kb.shop.admin.service;
+package pl.kb.shop.admin.product.service;
 
 import org.apache.commons.io.FilenameUtils;
 

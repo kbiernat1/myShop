@@ -1,4 +1,4 @@
-package pl.kb.shop.admin.controller;
+package pl.kb.shop.admin.product.controller;
 
 import com.github.slugify.Slugify;
 import lombok.RequiredArgsConstructor;
@@ -9,11 +9,11 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import pl.kb.shop.admin.controller.dto.AdminProductDto;
-import pl.kb.shop.admin.controller.dto.UploadResponse;
-import pl.kb.shop.admin.model.AdminProduct;
-import pl.kb.shop.admin.service.AdminProductService;
-import pl.kb.shop.admin.service.AdminProductImageService;
+import pl.kb.shop.admin.product.controller.dto.AdminProductDto;
+import pl.kb.shop.admin.product.controller.dto.UploadResponse;
+import pl.kb.shop.admin.product.model.AdminProduct;
+import pl.kb.shop.admin.product.service.AdminProductImageService;
+import pl.kb.shop.admin.product.service.AdminProductService;
 
 import javax.validation.Valid;
 import java.io.IOException;

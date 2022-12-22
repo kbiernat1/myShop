@@ -1,7 +1,8 @@
-package pl.kb.shop.admin.service;
+package pl.kb.shop.admin.product.service;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import pl.kb.shop.admin.product.service.ExistingFileRenameUtils;
 
 import java.io.IOException;
 import java.nio.file.Files;

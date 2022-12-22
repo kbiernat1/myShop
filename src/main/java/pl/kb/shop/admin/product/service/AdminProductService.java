@@ -1,11 +1,11 @@
-package pl.kb.shop.admin.service;
+package pl.kb.shop.admin.product.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import pl.kb.shop.admin.model.AdminProduct;
-import pl.kb.shop.admin.repository.AdminProductRepository;
+import pl.kb.shop.admin.product.model.AdminProduct;
+import pl.kb.shop.admin.product.repository.AdminProductRepository;
 
 @Service
 @RequiredArgsConstructor
