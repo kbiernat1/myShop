@@ -1,11 +1,10 @@
 package pl.kb.shop.category.model;
 
 import lombok.Getter;
+import pl.kb.shop.product.model.Product;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
