@@ -3,7 +3,7 @@ package pl.kb.shop.review.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.kb.shop.common.model.Review;
-import pl.kb.shop.review.repository.ReviewRepository;
+import pl.kb.shop.common.repository.ReviewRepository;
 
 @Service
 @RequiredArgsConstructor

@@ -1,20 +1,14 @@
-package pl.kb.shop.common.model;
+package pl.kb.shop.product.service.dto;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Builder
+public class ProductDto {
     private Long id;
     private String name;
     private Long categoryId;
@@ -24,4 +18,6 @@ public class Product {
     private String currency;
     private String img;
     private String slug;
+    private List<ReviewDto> reviews;
 }
+
