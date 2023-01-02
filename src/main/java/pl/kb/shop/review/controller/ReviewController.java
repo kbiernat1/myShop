@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import pl.kb.shop.review.controller.dto.ReviewDto;
-import pl.kb.shop.review.model.Review;
+import pl.kb.shop.common.model.Review;
 import pl.kb.shop.review.service.ReviewService;
 
 import javax.validation.Valid;

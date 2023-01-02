@@ -1,4 +1,4 @@
-package pl.kb.shop.review.model;
+package pl.kb.shop.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
