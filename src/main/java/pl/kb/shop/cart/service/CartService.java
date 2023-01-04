@@ -11,6 +11,7 @@ import pl.kb.shop.common.model.Product;
 import pl.kb.shop.product.repository.ProductRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static java.time.LocalDateTime.now;
 
@@ -45,5 +46,17 @@ public class CartService {
             return cartRepository.save(Cart.builder().created(now()).build());
         }
         return cartRepository.findById(id).orElseThrow();
+    }
+
+    @Transactional
+    public Cart updateCart(Long id, List<CartProductDto> cartProductDtos) {
+        Cart cart = cartRepository.findById(id).orElseThrow();
+        cart.getItems().forEach(cartItem -> {
+            cartProductDtos.stream()
+                    .filter(cartProductDto -> cartItem.getProduct().getId().equals(cartProductDto.productId()))
+                    .findFirst()
+                    .ifPresent(cartProductDto -> cartItem.setQuantity(cartProductDto.quantity()));
+        });
+        return cart;
     }
 }
