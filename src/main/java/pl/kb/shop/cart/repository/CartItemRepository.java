@@ -13,7 +13,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
 
     Long countByCartId(Long cartId);
 
-    @Query("delete from CartItem ci where ci.cartId=:cartId")
+    @Query("delete from CartItem ci where ci.cartId = :cartId")
     @Modifying
     void deleteByCartId(Long cartId);
 
