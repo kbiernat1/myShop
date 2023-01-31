@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.kb.shop.cart.controller.dto.CartSummaryDto;
 import pl.kb.shop.cart.controller.mapper.CartMapper;
-import pl.kb.shop.cart.model.Cart;
 import pl.kb.shop.cart.model.dto.CartProductDto;
 import pl.kb.shop.cart.service.CartService;
 

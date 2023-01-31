@@ -5,16 +5,15 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import pl.kb.shop.cart.model.Cart;
+import pl.kb.shop.common.model.Cart;
 import pl.kb.shop.cart.model.dto.CartProductDto;
-import pl.kb.shop.cart.repository.CartRepository;
+import pl.kb.shop.common.repository.CartRepository;
 import pl.kb.shop.common.model.Product;
 import pl.kb.shop.product.repository.ProductRepository;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 

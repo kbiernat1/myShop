@@ -1,10 +1,10 @@
-package pl.kb.shop.cart.repository;
+package pl.kb.shop.common.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import pl.kb.shop.cart.model.CartItem;
+import pl.kb.shop.common.model.CartItem;
 
 import java.util.List;
 

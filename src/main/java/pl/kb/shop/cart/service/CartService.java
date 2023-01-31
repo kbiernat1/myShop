@@ -3,14 +3,13 @@ package pl.kb.shop.cart.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import pl.kb.shop.cart.model.Cart;
-import pl.kb.shop.cart.model.CartItem;
+import pl.kb.shop.common.model.Cart;
+import pl.kb.shop.common.model.CartItem;
 import pl.kb.shop.cart.model.dto.CartProductDto;
-import pl.kb.shop.cart.repository.CartRepository;
+import pl.kb.shop.common.repository.CartRepository;
 import pl.kb.shop.common.model.Product;
 import pl.kb.shop.product.repository.ProductRepository;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import static java.time.LocalDateTime.now;
