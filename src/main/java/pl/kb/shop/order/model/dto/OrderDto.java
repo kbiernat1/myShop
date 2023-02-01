@@ -28,8 +28,8 @@ public class OrderDto {
     @NotNull
     private Long cartId;
     @NotNull
-    private Long shipmentId;
-    @NotNull
     private Long paymentId;
+    @NotNull
+    private Long shipmentId;
 }
 
