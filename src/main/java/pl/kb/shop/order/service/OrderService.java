@@ -3,6 +3,7 @@ package pl.kb.shop.order.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import pl.kb.shop.common.email.EmailClientService;
 import pl.kb.shop.common.model.Cart;
 import pl.kb.shop.common.model.CartItem;
 import pl.kb.shop.common.repository.CartItemRepository;
@@ -17,6 +18,7 @@ import pl.kb.shop.order.repository.ShipmentRepository;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -29,6 +31,7 @@ public class OrderService {
     private final CartItemRepository cartItemRepository;
     private final ShipmentRepository shipmentRepository;
     private final PaymentRepository paymentRepository;
+    private final EmailClientService emailClientService;
 
     @Transactional
     public OrderSummary placeOrder(OrderDto orderDto) {
@@ -53,7 +56,7 @@ public class OrderService {
 
         cartRepository.deleteCartById(order.getId());
         cartItemRepository.deleteByCartId(orderDto.getCartId());
-
+        emailClientService.getInstance().send(order.getEmail(), "Twoje zamówienie zostało przyjęte", createEmailMsg(order));
         return OrderSummary.builder()
                 .id(newOrder.getId())
                 .placeDate(newOrder.getPlaceDate())
@@ -61,6 +64,22 @@ public class OrderService {
                 .grossValue(newOrder.getGrossValue())
                 .payment(payment)
                 .build();
+    }
+
+    private String createEmailMsg(Order order) {
+        return "Dziękujemy za zakupy w naszym serwisie.\n" +
+                "Twoje zamówienie zostało przekazane do realizacji. Informujemy, że przygotowanie i wysyłka " +
+                "towarów trwa około 3 - 4 dni roboczych (z wyłączeniem weekendów i świąt).\n\n" +
+                "DANE ZAMÓWIENIA:\n" +
+                "Numer zamówienia: " + order.getId() + "\n" +
+                "Data zamówienia: " + order.getPlaceDate().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")) + "\n" +
+                "Kwota łączna: " + order.getGrossValue() + " PLN\n" +
+                "Sposób płatności: " + order.getPayment().getName() +
+                (order.getPayment().getNote() != null ? "\n" + order.getPayment().getNote() : "") +
+                "\n\nADRES DOSTAWY:\n" +
+                order.getFirst_name() + " " + order.getLast_name() + "\n" +
+                order.getStreet() + "\n" +
+                order.getZipcode() + " " + order.getCity();
     }
 
     private BigDecimal calculatedGrossValue(List<CartItem> items, Shipment shipment) {
