@@ -3,7 +3,7 @@ package pl.kb.shop.admin.order.model;
 import lombok.Getter;
 import pl.kb.shop.order.model.PaymentType;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "payment")

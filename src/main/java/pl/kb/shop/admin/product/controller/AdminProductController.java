@@ -15,7 +15,7 @@ import pl.kb.shop.admin.product.model.AdminProduct;
 import pl.kb.shop.admin.product.service.AdminProductImageService;
 import pl.kb.shop.admin.product.service.AdminProductService;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;

@@ -4,7 +4,7 @@ import lombok.Getter;
 import pl.kb.shop.admin.product.model.AdminProduct;
 import pl.kb.shop.order.model.Shipment;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity

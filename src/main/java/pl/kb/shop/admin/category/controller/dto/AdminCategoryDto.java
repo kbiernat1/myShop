@@ -3,7 +3,7 @@ package pl.kb.shop.admin.category.controller.dto;
 import lombok.Getter;
 import org.hibernate.validator.constraints.Length;
 
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 @Getter
 public class AdminCategoryDto {

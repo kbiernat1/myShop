@@ -14,7 +14,7 @@ import pl.kb.shop.common.model.Product;
 import pl.kb.shop.product.service.ProductService;
 import pl.kb.shop.product.service.dto.ProductDto;
 
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController

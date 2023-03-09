@@ -1,6 +1,5 @@
 package pl.kb.shop.admin.category.controller;
 
-import com.github.slugify.Slugify;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import pl.kb.shop.admin.category.controller.dto.AdminCategoryDto;

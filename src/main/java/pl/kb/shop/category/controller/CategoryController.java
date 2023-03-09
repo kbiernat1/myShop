@@ -12,7 +12,7 @@ import pl.kb.shop.common.model.Category;
 import pl.kb.shop.category.dto.CategoryProductsDto;
 import pl.kb.shop.category.service.CategoryService;
 
-import javax.validation.constraints.Pattern;
+import jakarta.validation.constraints.Pattern;
 import java.util.List;
 
 @RestController

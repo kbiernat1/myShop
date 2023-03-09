@@ -1,9 +1,8 @@
 package pl.kb.shop.common.model;
 
 import lombok.*;
-import pl.kb.shop.common.model.Product;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Getter

@@ -2,7 +2,7 @@ package pl.kb.shop.common.model;
 
 import lombok.Getter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Getter
