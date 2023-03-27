@@ -36,5 +36,6 @@ public class Order {
     private String phone;
     @OneToOne
     private Payment payment;
+    private Long userId;
 }
 

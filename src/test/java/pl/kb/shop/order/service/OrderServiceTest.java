@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -63,8 +62,9 @@ class OrderServiceTest {
         when(paymentRepository.findById(any())).thenReturn(createPayment());
         when(orderRepository.save(any())).thenAnswer(invocation -> invocation.getArguments()[0]);
         when(emailClientService.getInstance()).thenReturn(new FakeEmailService());
+        Long userId = 1L;
         //when
-        OrderSummary orderSummary = orderService.placeOrder(orderDto);
+        OrderSummary orderSummary = orderService.placeOrder(orderDto, userId);
         //then
         assertThat(orderSummary).isNotNull();
         assertThat(orderSummary.getStatus()).isEqualTo(OrderStatus.NEW);

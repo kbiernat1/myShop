@@ -12,6 +12,8 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import pl.kb.shop.security.model.ShopUserDetails;
+
 import java.io.IOException;
 
 public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
@@ -48,8 +50,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
                     .verify(token.replace(TOKEN_PREFIX, ""))
                     .getSubject();
             if (username != null) {
-                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-                return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), null, userDetails.getAuthorities());
+                ShopUserDetails userDetails = (ShopUserDetails) userDetailsService.loadUserByUsername(username);
+                return new UsernamePasswordAuthenticationToken(userDetails.getId(), null, userDetails.getAuthorities());
             }
         }
         return null;

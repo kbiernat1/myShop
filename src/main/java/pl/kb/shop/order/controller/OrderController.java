@@ -1,6 +1,7 @@
 package pl.kb.shop.order.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import pl.kb.shop.order.model.dto.InitOrder;
 import pl.kb.shop.order.model.dto.OrderDto;
@@ -19,8 +20,8 @@ public class OrderController {
     private final PaymentService paymentService;
 
     @PostMapping
-    public OrderSummary placeOrder(@RequestBody OrderDto orderDto) {
-        return orderService.placeOrder(orderDto);
+    public OrderSummary placeOrder(@RequestBody OrderDto orderDto, @AuthenticationPrincipal Long userId) {
+        return orderService.placeOrder(orderDto, userId);
     }
 
     @GetMapping("/initData")

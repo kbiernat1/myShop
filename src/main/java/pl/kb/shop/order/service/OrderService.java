@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.kb.shop.common.email.EmailClientService;
 import pl.kb.shop.common.model.Cart;
-import pl.kb.shop.common.model.CartItem;
 import pl.kb.shop.common.repository.CartItemRepository;
 import pl.kb.shop.common.repository.CartRepository;
 import pl.kb.shop.order.model.*;
@@ -15,11 +14,6 @@ import pl.kb.shop.order.repository.OrderRepository;
 import pl.kb.shop.order.repository.OrderRowRepository;
 import pl.kb.shop.order.repository.PaymentRepository;
 import pl.kb.shop.order.repository.ShipmentRepository;
-
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import static pl.kb.shop.order.service.mapper.OrderEmailMsgMapper.createEmailMsg;
 import static pl.kb.shop.order.service.mapper.OrderMapper.*;
@@ -37,11 +31,11 @@ public class OrderService {
     private final EmailClientService emailClientService;
 
     @Transactional
-    public OrderSummary placeOrder(OrderDto orderDto) {
+    public OrderSummary placeOrder(OrderDto orderDto, Long userId) {
         Cart cart = cartRepository.findById(orderDto.getCartId()).orElseThrow();
         Shipment shipment = shipmentRepository.findById(orderDto.getShipmentId()).orElseThrow();
         Payment payment = paymentRepository.findById(orderDto.getPaymentId()).orElseThrow();
-        Order newOrder = orderRepository.save(createNewOrder(orderDto, cart, shipment, payment));
+        Order newOrder = orderRepository.save(createNewOrder(orderDto, cart, shipment, payment, userId));
         saveOrderRows(cart, newOrder.getId(), shipment);
 
         clearOrderCart(orderDto);
