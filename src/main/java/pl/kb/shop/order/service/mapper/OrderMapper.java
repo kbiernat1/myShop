@@ -2,6 +2,7 @@ package pl.kb.shop.order.service.mapper;
 
 import pl.kb.shop.common.model.Cart;
 import pl.kb.shop.common.model.CartItem;
+import pl.kb.shop.common.model.OrderStatus;
 import pl.kb.shop.order.model.*;
 import pl.kb.shop.order.model.dto.OrderDto;
 import pl.kb.shop.order.model.dto.OrderSummary;

@@ -3,17 +3,15 @@ package pl.kb.shop.security;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import pl.kb.shop.security.model.UserRole;
-
-import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity(debug = true)
@@ -30,8 +28,10 @@ public class SecurityConfig {
                                            AuthenticationManager authenticationManager,
                                            UserDetailsService userDetailsService) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/admin/**").hasRole((UserRole.ROLE_ADMIN.getRole()))
-                .anyRequest().permitAll());
+                .requestMatchers("/admin/**").hasRole(UserRole.ROLE_ADMIN.getRole())
+                .requestMatchers(HttpMethod.GET, "/orders").authenticated()
+                .anyRequest().permitAll()
+        );
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); //sesja bezstanowa bez http, cookie tworzone, ale ignorowane
         http.addFilter(new JwtAuthorizationFilter(authenticationManager, userDetailsService, secret));

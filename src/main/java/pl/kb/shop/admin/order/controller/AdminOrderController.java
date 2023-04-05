@@ -8,8 +8,8 @@ import pl.kb.shop.admin.order.controller.dto.AdminInitDataDto;
 import pl.kb.shop.admin.order.controller.dto.AdminOrderDto;
 import pl.kb.shop.admin.order.controller.mapper.AdminOrderMapper;
 import pl.kb.shop.admin.order.model.AdminOrder;
-import pl.kb.shop.admin.order.model.AdminOrderStatus;
 import pl.kb.shop.admin.order.service.AdminOrderService;
+import pl.kb.shop.common.model.OrderStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +43,7 @@ public class AdminOrderController {
 
     private Map<String, String> createOrderStatusesMap() {
         HashMap<String, String> statuses = new HashMap<>();
-        for(AdminOrderStatus value : AdminOrderStatus.values()) {
+        for(OrderStatus value : OrderStatus.values()) {
             statuses.put(value.name(), value.getValue());
         }
         return statuses;

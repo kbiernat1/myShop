@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import jakarta.persistence.*;
+import pl.kb.shop.common.model.OrderStatus;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,7 +20,7 @@ public class AdminOrder {
     private Long id;
     private LocalDateTime placeDate;
     @Enumerated(EnumType.STRING)
-    private AdminOrderStatus orderStatus;
+    private OrderStatus orderStatus;
     @OneToMany
     @JoinColumn(name = "orderId")
     private List<AdminOrderRow> orderRows;

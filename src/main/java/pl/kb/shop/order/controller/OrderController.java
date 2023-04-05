@@ -5,10 +5,13 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import pl.kb.shop.order.model.dto.InitOrder;
 import pl.kb.shop.order.model.dto.OrderDto;
+import pl.kb.shop.order.model.dto.OrderListDto;
 import pl.kb.shop.order.model.dto.OrderSummary;
 import pl.kb.shop.order.service.OrderService;
 import pl.kb.shop.order.service.PaymentService;
 import pl.kb.shop.order.service.ShipmentService;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,5 +33,13 @@ public class OrderController {
                 .shipments(shipmentService.getShipments())
                 .payments(paymentService.getPayments())
                 .build();
+    }
+
+    @GetMapping
+    public List<OrderListDto> getOrders(@AuthenticationPrincipal Long userId){
+        if (userId == null) {
+            throw new IllegalArgumentException("Brak użytkownika");
+        }
+        return orderService.getOrdersForCustomer(userId);
     }
 }

@@ -9,12 +9,16 @@ import pl.kb.shop.common.repository.CartItemRepository;
 import pl.kb.shop.common.repository.CartRepository;
 import pl.kb.shop.order.model.*;
 import pl.kb.shop.order.model.dto.OrderDto;
+import pl.kb.shop.order.model.dto.OrderListDto;
 import pl.kb.shop.order.model.dto.OrderSummary;
 import pl.kb.shop.order.repository.OrderRepository;
 import pl.kb.shop.order.repository.OrderRowRepository;
 import pl.kb.shop.order.repository.PaymentRepository;
 import pl.kb.shop.order.repository.ShipmentRepository;
 
+import java.util.List;
+
+import static pl.kb.shop.order.service.mapper.OrderDtoMapper.mapToOrderListDto;
 import static pl.kb.shop.order.service.mapper.OrderEmailMsgMapper.createEmailMsg;
 import static pl.kb.shop.order.service.mapper.OrderMapper.*;
 
@@ -71,5 +75,9 @@ public class OrderService {
                 )
                 .peek(orderRowRepository::save)
                 .toList();
+    }
+
+    public List<OrderListDto> getOrdersForCustomer(Long userId) {
+        return mapToOrderListDto(orderRepository.findByUserId(userId));
     }
 }

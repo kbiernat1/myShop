@@ -1,6 +1,6 @@
-package pl.kb.shop.admin.order.model;
+package pl.kb.shop.common.model;
 
-public enum AdminOrderStatus {
+public enum OrderStatus {
     NEW("nowe"),
     PAID("opłacone"),
     PROCESSING("przetwarzane"),
@@ -11,7 +11,7 @@ public enum AdminOrderStatus {
 
     private String value;
 
-    AdminOrderStatus(String value) {
+    OrderStatus(String value) {
         this.value = value;
     }
 
