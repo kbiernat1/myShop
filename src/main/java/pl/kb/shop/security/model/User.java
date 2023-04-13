@@ -5,6 +5,7 @@ import lombok.*;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -26,4 +27,6 @@ public class User implements Serializable {
     @Column(name = "authority")
     @Enumerated(EnumType.STRING)
     private List<UserRole> authorities;
+    private String hash;
+    private LocalDateTime HashDate;
 }
